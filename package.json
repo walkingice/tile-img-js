@@ -5,6 +5,9 @@
   "main": "index.js",
   "author": "Julian_Chu",
   "license": "MIT",
+  "scripts": {
+    "concept": "node concept/test_read.js"
+  },
   "dependencies": {
     "pngjs": "^7.0.0"
   }
