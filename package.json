@@ -4,5 +4,8 @@
   "description": "To tile several images",
   "main": "index.js",
   "author": "Julian_Chu",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "pngjs": "^7.0.0"
+  }
 }
