@@ -1,0 +1,26 @@
+# OS or Editor folders
+.DS_Store
+.cache
+.project
+.settings
+.tmproj
+nbproject
+Thumbs.db
+
+# NPM packages folder.
+node_modules/
+yarn.lock
+package-lock.json
+
+dist/
+public/
+build
+
+local.json
+
+.idea
+*.iml
+
+.vscode
+.gradle
+
