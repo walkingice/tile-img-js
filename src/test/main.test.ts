@@ -1,3 +1,8 @@
 import { Dummy } from './dummy/Dummy'
-const dummy: Dummy = new Dummy()
-console.log(dummy.greeting)
+
+test('Verify dummy strings', () => {
+    const dummy: Dummy = new Dummy()
+    console.log(dummy.greeting)
+    // Assert
+    expect(dummy.greeting).toBe("Dummy class");
+});

@@ -15,6 +15,7 @@ package-lock.json
 dist/
 public/
 build
+coverage/
 
 local.json
 
