@@ -49,4 +49,31 @@ function writePng(relativeFilePath) {
     }
     png.pack().pipe(outStream)
 }
-writePng(`${dstDir}/output.png`)
+// writePng(`${dstDir}/output.png`)
+
+function parsePng(srcPath) {
+    const fsStream = fs.createReadStream(srcPath)
+    const pngStream = new pngjs.PNG()
+    return new Promise((resolve, reject) => {
+        fsStream.pipe(pngStream)
+            .on('parsed', (data) => {
+                resolve(pngStream)
+            })
+    })
+}
+
+async function copyBit(dstPng, srcPath, x, y) {
+    const parsed = await parsePng(srcPath)
+    parsed.bitblt(dstPng, 0, 0, parsed.width, parsed.height, x, y)
+}
+
+async function tile(inputPathA, inputPathB, outputPath) {
+    const width = 256 * 2
+    const height = 256
+    const outputPng = new pngjs.PNG({ width, height })
+    await copyBit(outputPng, inputPathA, 0, 0)
+    await copyBit(outputPng, inputPathB, 255, 0)
+    outputPng.pack().pipe(fs.createWriteStream(outputPath))
+}
+
+tile(filesPath[0], filesPath[1], `${dstDir}/output.png`)
