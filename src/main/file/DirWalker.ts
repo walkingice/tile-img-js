@@ -2,6 +2,7 @@ import * as NodeFs from 'node:fs'
 import * as NodePath from 'node:path'
 import { URL, fileURLToPath } from 'node:url'
 import { ImageType } from '../image/ImageType'
+import { NodeUtil } from '../util/NodeUtil'
 import { FileChecker } from './FileChecker'
 import { TilingFile } from './TilingFile'
 import { FileUtil } from './FileUtil'
@@ -55,7 +56,7 @@ function readDirSync(dirUrl: URL): TilingFile {
     const dirPath: string = fileURLToPath(dirUrl)
     const supportedFilesUrl = NodeFs.readdirSync(dirPath)
         .filter(verifyFileName)
-        .map((fileName: string) => { return new URL(fileName, dirUrl) })
+        .map((fileName: string) => NodeUtil.appendFileName(dirUrl, fileName))
     if (supportedFilesUrl.length > 0) {
         const baseOutputFilename: string = NodePath.basename(dirPath)
         const outputFileName: string = ImageType.appendExtension(baseOutputFilename)

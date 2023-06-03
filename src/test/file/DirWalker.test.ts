@@ -1,7 +1,6 @@
-import { DirWalker } from "../../main/file/DirWalker";
-import { Test as TestObj } from "../../main/file/DirWalker";
-import * as NodeUrl from 'node:url'
-import * as NodeFs from 'node:fs'
+import * as NodeFs from 'node:fs';
+import * as NodeUrl from 'node:url';
+import { DirWalker, Test as TestObj } from "../../main/file/DirWalker";
 
 test('Verify DirWalker walkDirSync with existing path', () => {
     // disable console.warn, beacuse we already expect it will be invoked in our test
@@ -19,6 +18,7 @@ test('Verify DirWalker walkDirSync with existing path', () => {
     expect(tilingFiles[0].srcFileUrls.length).toBe(4)
     expect(tilingFiles[1].dstFileName).toBe("group2.png")
     expect(tilingFiles[1].srcFileUrls.length).toBe(3)
+    expect(tilingFiles[0].srcFileUrls[0]).toEqual(NodeUrl.pathToFileURL("src/test/assets/group1/img_1.png"))
 });
 
 test('Verify DirWalker handleDirBlock failed with normal file', () => {
@@ -49,6 +49,7 @@ test('Verify DirWalker readDirSync with existing path', () => {
     expect(tilingFile).not.toBeNull()
     expect(tilingFile.dstFileName).toBe("group1.png")
     expect(tilingFile.srcFileUrls.length).toBe(4)
+    expect(tilingFile.srcFileUrls[0]).toEqual(NodeUrl.pathToFileURL("src/test/assets/group1/img_1.png"))
 });
 
 test('Verify DirWalker readDirSync with existing path', () => {
