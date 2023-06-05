@@ -1,4 +1,4 @@
-import { URL } from 'node:url';
+import * as NodeUrl from 'node:url';
 import { ImgMetadata } from "./ImgMetadata";
 
 /**
@@ -6,9 +6,9 @@ import { ImgMetadata } from "./ImgMetadata";
  */
 export class TilingImageSource {
     public readonly metadata: ImgMetadata
-    public readonly fileUrl: URL
+    public readonly fileUrl: NodeUrl.URL
 
-    constructor(metadata: ImgMetadata, fileUrl: URL) {
+    constructor(metadata: ImgMetadata, fileUrl: NodeUrl.URL) {
         this.metadata = metadata
         this.fileUrl = fileUrl
     }

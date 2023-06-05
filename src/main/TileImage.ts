@@ -1,4 +1,4 @@
-import * as NodeFs from 'fs';
+import * as NodeFs from 'node:fs';
 import * as NodeUrl from 'node:url';
 import * as NodePath from 'node:path'
 import * as PngJs from 'pngjs';

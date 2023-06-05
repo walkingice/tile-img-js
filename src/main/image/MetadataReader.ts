@@ -1,5 +1,5 @@
-import * as fs from 'fs';
-import { URL, fileURLToPath } from 'node:url';
+import * as NodeFs from 'node:fs';
+import * as NodeUrl from 'node:url';
 import * as PngJs from 'pngjs';
 import { ImgMetadata } from "../model/ImgMetadata";
 
@@ -7,9 +7,9 @@ import { ImgMetadata } from "../model/ImgMetadata";
  * A class to parse metadata from given URL of image file.
  */
 export class MetadataReader {
-    static getMetadata(fileUrl: URL): Promise<ImgMetadata> {
-        const path = fileURLToPath(fileUrl)
-        const fsStream = fs.createReadStream(path)
+    static getMetadata(fileUrl: NodeUrl.URL): Promise<ImgMetadata> {
+        const path = NodeUrl.fileURLToPath(fileUrl)
+        const fsStream = NodeFs.createReadStream(path)
         const pngStream = new PngJs.PNG({ filterType: 4 })
         return new Promise((resolve, reject) => {
             fsStream

@@ -1,11 +1,11 @@
 import * as NodeFs from 'node:fs'
 import * as NodePath from 'node:path'
-import { URL, fileURLToPath } from 'node:url'
+import * as NodeUrl from 'node:url'
 import { ImageType } from '../image/ImageType'
 import { NodeUtil } from '../util/NodeUtil'
 import { FileChecker } from './FileChecker'
-import { TilingFile } from './TilingFile'
 import { FileUtil } from './FileUtil'
+import { TilingFile } from './TilingFile'
 
 /**
  * An util class to traversal given directory and to return corresponding set of [TilingFile].
@@ -36,13 +36,13 @@ export class DirWalker {
      * @param startDirUrl a URL points to the directory that be checked.
      * @returns TilingFile if given directory is usable. Otherwise, returns null.
      */
-    static walkDirSync(startDirUrl: URL): Array<TilingFile> {
+    static walkDirSync(startDirUrl: NodeUrl.URL): Array<TilingFile> {
         FileUtil.ensureDirSync(startDirUrl)
-        const dirPath: string = fileURLToPath(startDirUrl)
+        const dirPath: string = NodeUrl.fileURLToPath(startDirUrl)
         const subDirs = NodeFs.readdirSync(dirPath, { withFileTypes: true })
             .filter((dirent) => dirent.isDirectory())
             .map((dirent) => dirent.name)
-            .map((dirName: string) => { return new URL(dirName, startDirUrl) })
+            .map((dirName: string) => { return new NodeUrl.URL(dirName, startDirUrl) })
         return subDirs.map(readDirSync)
     }
 }
@@ -51,9 +51,9 @@ export class DirWalker {
  * For a give URL of directory, use the directory name as Output file name,
  *  and those supported image files in the directory as Source. Returns a TilingFile.
  */
-function readDirSync(dirUrl: URL): TilingFile {
+function readDirSync(dirUrl: NodeUrl.URL): TilingFile {
     FileUtil.ensureDirSync(dirUrl)
-    const dirPath: string = fileURLToPath(dirUrl)
+    const dirPath: string = NodeUrl.fileURLToPath(dirUrl)
     const supportedFilesUrl = NodeFs.readdirSync(dirPath)
         .filter(verifyFileName)
         .map((fileName: string) => NodeUtil.appendFileName(dirUrl, fileName))

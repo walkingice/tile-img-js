@@ -1,13 +1,13 @@
-import { URL, pathToFileURL } from 'node:url'
+import * as NodeUrl from 'node:url';
 import { TilingFile } from "../../main/file/TilingFile";
 
 test('Verify TilingFile constructor', () => {
     const tiling: TilingFile = new TilingFile(
         "outputWithoutExtension",
         [
-            pathToFileURL("/src/img1.png"),
-            pathToFileURL("/src/img2.png"),
-            pathToFileURL("/src/img3.png"),
+            NodeUrl.pathToFileURL("/src/img1.png"),
+            NodeUrl.pathToFileURL("/src/img2.png"),
+            NodeUrl.pathToFileURL("/src/img3.png"),
         ],
     )
     expect(tiling.dstFileName).toBe("outputWithoutExtension");

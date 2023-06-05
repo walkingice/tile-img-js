@@ -1,4 +1,4 @@
-import { URL } from 'node:url'
+import * as NodeUrl from 'node:url'
 
 /**
  * A data class to provide information that be used for tiling images.
@@ -8,7 +8,7 @@ export class TilingFile {
     /**
      * Use these files as source for tiling image.
      */
-    public readonly srcFileUrls: Array<URL> = []
+    public readonly srcFileUrls: Array<NodeUrl.URL> = []
 
     /**
      * Destination filename(without extension) for writing tiled image.
