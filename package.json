@@ -7,8 +7,7 @@
   "license": "MIT",
   "scripts": {
     "build_ts": "tsc --build",
-    "build_and_test_ts": "tsc --build && yarn jest",
-    "concept": "node concept/test_read.js"
+    "build_and_test_ts": "tsc --build && yarn jest"
   },
   "dependencies": {
     "pngjs": "^7.0.0"
