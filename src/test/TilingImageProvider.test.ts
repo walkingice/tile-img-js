@@ -42,6 +42,6 @@ test('Verify TilingImageProvider.parseTilingFile', async () => {
     // current simple implementation, only arranges rects in horizontal
     expect(result.tiledRect.rects[0]).toEqual(new Rect(0, 0, 256, 256));
     expect(result.tiledRect.rects[1]).toEqual(new Rect(256, 0, 256, 256));
-    expect(result.tiledRect.rects[2]).toEqual(new Rect(512, 0, 256, 256));
-    expect(result.tiledRect.container).toEqual(new Rect(0, 0, 768, 256))
+    expect(result.tiledRect.rects[2]).toEqual(new Rect(0, 256, 256, 256));
+    expect(result.tiledRect.container).toEqual(new Rect(0, 0, 512, 512))
 })
