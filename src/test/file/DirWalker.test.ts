@@ -13,11 +13,15 @@ test('Verify DirWalker walkDirSync with existing path', () => {
 
     // Verify
     expect(tilingFiles).not.toBeNull()
-    expect(tilingFiles.length).toBe(2)
+    expect(tilingFiles.length).toBe(4)
     expect(tilingFiles[0].dstFileName).toBe("group1.png")
     expect(tilingFiles[0].srcFileUrls.length).toBe(4)
     expect(tilingFiles[1].dstFileName).toBe("group2.png")
     expect(tilingFiles[1].srcFileUrls.length).toBe(3)
+    expect(tilingFiles[2].dstFileName).toBe("group3.png")
+    expect(tilingFiles[2].srcFileUrls.length).toBe(8)
+    expect(tilingFiles[3].dstFileName).toBe("group4.png")
+    expect(tilingFiles[3].srcFileUrls.length).toBe(6)
     expect(tilingFiles[0].srcFileUrls[0]).toEqual(NodeUrl.pathToFileURL("src/test/assets/group1/img_1.png"))
 });
 

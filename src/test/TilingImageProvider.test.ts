@@ -10,9 +10,11 @@ test('Verify TilingImageProvider.readDir', async () => {
     const startDir: NodeUrl.URL = NodeUrl.pathToFileURL("src/test/assets/")
     const outpuDir: NodeUrl.URL = NodeUrl.pathToFileURL("path/to/output/")
     const results = await TilingImageProvider.readDir(startDir, outpuDir)
-    expect(results.length).toEqual(2)
+    expect(results.length).toEqual(4)
     expect(results[0].destination).toEqual(NodeUrl.pathToFileURL("path/to/output/group1.png"))
     expect(results[1].destination).toEqual(NodeUrl.pathToFileURL("path/to/output/group2.png"))
+    expect(results[2].destination).toEqual(NodeUrl.pathToFileURL("path/to/output/group3.png"))
+    expect(results[3].destination).toEqual(NodeUrl.pathToFileURL("path/to/output/group4.png"))
 })
 
 test('Verify TilingImageProvider.parseTilingFile', async () => {
