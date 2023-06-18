@@ -6,19 +6,19 @@ This project is to provide a tool that to tile several images into one file.
 
 From
 
-![src 1](./assets/src_1.png)
-
-and
-
-![src 2](./assets/src_2.png)
-
-and
-
-![src 3](./assets/src_3.png)
+![input_1](./assets/input_1.png)
 
 to
 
-![output](./assets/output.png)
+![output_1](./assets/output_1.png)
+
+or from
+
+![input_2](./assets/input_2.png)
+
+to
+
+![output_2](./assets/output_2.png)
 
 # Run
 
@@ -38,5 +38,4 @@ $ yarn jest
 
 # Limitations
 
-* currently only tile images horizontally
 * only support png as input
